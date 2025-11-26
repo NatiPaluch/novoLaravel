@@ -13,6 +13,10 @@ class DashboardController extends Controller
 
         $mensagens = SiteContato::latest()->get();
 
+<<<<<<< HEAD
         return view('pages.admin.dashboard', compact('pageTitle','mensagens'));
+=======
+        return view('pages.admin.dashboard', compact('pageTitle', 'mensagens'));
+>>>>>>> 1033cc00b0f653bc28941259b58825fd80cf1283
     }
 }
