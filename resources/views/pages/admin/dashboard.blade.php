@@ -1,7 +1,7 @@
 <x-app :pageTitle="$pageTitle">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Mensagens Recebidas</h1>
-        <span class="badge bg-primary rounded-pill">{{  }}</span>
+        <span class="badge bg-primary rounded-pill">{{count($mensagens)}}</span>
     </div>
 
     <div class="card shadow-sm">
@@ -18,18 +18,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                       
+                        @forelse ($mensagens as $mensagem)
                             <tr>
-                                <th scope="row">{{  }}</th>
-                                <td>{{  }}</td>
-                                <td>{{  }}</td>
-                                <td>{{  }}</td>
-                                <td>{{ }}</td>
-                            </tr>
-                      
-                            <tr>
-                                <td colspan="5" class="text-center">Nenhuma mensagem recebida ainda.</td>
-                            </tr>
+                                    <th scope="row">{{ $mensagem-> id }}</th>
+                                    <td>{{ $mensagem-> nome }}</td>
+                                    <td>{{ $mensagem-> email }}</td>
+                                    <td>{{ $mensagem-> mensagem }}</td>
+                                    <td>{{ $mensagem-> created_at ->format('d/m/Y H:i') }}</td>
+                                </tr>
+                        @empty
+
+                        <tr>
+                            <td colspan="5" class="text-center">Nenhuma mensagem recebida ainda.</td>
+                        </tr>
+                        
+                        @endforelse
+                                  
                         
                     </tbody>
                 </table>
